@@ -37,7 +37,7 @@ def main() -> None:
     args = parser.parse_args()
 
     if args.find_note:
-        card_ids = get_cards_id_by_query("A problem-solving agent is one that considers")
+        card_ids = get_cards_id_by_query(args.find_note)
         if len(card_ids) != 0:
             card_id = card_ids[0]
             print(card_id)
