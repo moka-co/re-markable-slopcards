@@ -25,4 +25,4 @@ jobs:
         run: ruff format --check .
 
       - name: Run Mypy (Type Checking)
-        run: mypy . --explicit-package-bases
+        run: mypy .

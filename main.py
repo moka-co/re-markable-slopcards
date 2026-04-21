@@ -44,11 +44,6 @@ def main() -> int:
     # Args parser for editing notes
     args = parser.parse_args()
 
-    # Check if AnkiConnect is up
-    # if not check_anki.is_anki_running():
-    #    logger.error("Error with AnkiConnect, no new notes are added")
-    #    return
-
     if args.find_note:
         card_ids = notes.get_cards_id_by_query(args.find_note)
         if card_ids is not None and len(card_ids) != 0:
