@@ -35,7 +35,10 @@ To ensure high-quality cards, follow these rules when generating content:
 - Replace internal newlines with <br>
 - Escape double quotes by doubling them ("").
 
-## CSV Format Required
+## Constraints
+When you are creating less than 100 cards, do not create Python script when creating the CSV file. Directly output the raw CSV data to the file.
+
+### CSV Format Required
 The `main.py` script expects a standard CSV with a header row. Use this structure:
 ```csv
 front, back
