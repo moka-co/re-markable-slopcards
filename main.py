@@ -1,5 +1,6 @@
-from src.notes import add_note, get_cards_id_by_query, get_note_by_id, update_note_by_id, add_notes_from_csv_file
-from src.decks import get_deck_names_and_ids
+import src.notes as notes
+import src.decks as decks
+import src.utils.check_anki as check_anki
 import requests
 import re
 import csv
@@ -13,14 +14,14 @@ logging.basicConfig(
     level=logging.DEBUG,
     format="%(asctime)s [%(levelname)s] %(name)s - %(message)s"
 )
- 
+
+logger = logging.getLogger(__name__)
 
 # Main function
 def main() -> None:
     # Check if AnkiConnect is up
-    deck_names = get_deck_names_and_ids()
-    if not deck_names:
-        print("Error with Anki Connect, no new notes are added")
+    if not check_anki.is_anki_running():
+        logger.error("Error with AnkiConnect, no new notes are added")
         return
 
     # Args parser for add notes from csv
@@ -32,33 +33,35 @@ def main() -> None:
     parser.add_argument("--update_note_by_id", help="Edit a note by id")
     parser.add_argument("--new_front_text")
     parser.add_argument("--new_back_text")
+    parser.add_argument("--check_anki")
 
     # Args parser for editing notes
     args = parser.parse_args()
 
     if args.find_note:
-        card_ids = get_cards_id_by_query(args.find_note)
+        card_ids = notes.get_cards_id_by_query(args.find_note)
         if len(card_ids) != 0:
             card_id = card_ids[0]
             print(card_id)
-    if args.get_note_by_id:
+    elif args.get_note_by_id:
         ids = list()
         ids.append(int(args.get_note_by_id))
-        note_info = get_notes_info_by_id(ids)
+        note_info = notes.get_notes_info_by_id(ids)
 
         note_fields = note_info[0]['fields']
         for field in note_fields:
             print(f"{field} : {note_fields[field]['value']}")
-    if args.update_note_by_id:
+    elif args.update_note_by_id:
         ids = list()
         ids.append(int(args.update_note_by_id))
-        note_info = get_notes_info_by_id(ids)
+        note_info = notes.get_notes_info_by_id(ids)
 
         result = update_note(ids[0], front=args.new_front_text, back=args.new_back_text)
-
     elif args.f and args.deck_name:
-        add_notes_from_csv_file(args.f, args.deck_name)
+        notes.add_notes_from_csv_file(args.f, args.deck_name)
         print("Script correctly finished!")
+    elif args.check_anki:
+        utils.is_anki_running()
 
     return 0
 
