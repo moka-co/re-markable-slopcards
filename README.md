@@ -8,19 +8,22 @@
 
 ## Quick Start
 
-1. Prerequisites
-- Anki must be installed and running
-- AnkiConnect add-on installed (Code: 2055492159), leave default configuration
+### Prerequisites
+- [Anki](https://apps.ankiweb.net/) must be installed and running
+- [AnkiConnect](https://ankiweb.net/shared/info/2055492159) add-on installed (Code: `2055492159`), leave default configuration
 
-2. Installation
+### Installation
 Follow your favorite tool instructions on how to add this skill. 
 Usually it involve cloning this repo into a `.skills` directory:
 ```bash
 git clone https://github.com/moka-co/slopcards2anki.git
 ```
 
-3. Usage
+### Usage
 Once the skill is added to Claude Code / Gemini CLI / Qwen CLI, you can type a prompt like this:
 ```text
-Read @My/Study/Note.md, make 30 high-retention flashcards and use slopcards-to-anki skill to upload them to anki
+Convert "My/Study/Note.md" into 30 atomic Anki flashcards using slopcards-to-anki SKILL
 ```
+
+## Limitations
+This skill currently doesn't support images upload to notes. **As far as i know** and **with the tools i have tested** (Gemini and Qwen) they don't make flashcards with images. Very rarely i have seen Gemini making flashcards with "textual description" of a very simple image like a diagram.
