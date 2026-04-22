@@ -25,7 +25,10 @@ def main() -> int:
         "--create_deck", help="Create a new deck, requires that you specify a name"
     )
     parser.add_argument(
-        "--f", "--file-name", help="The path to the file containing your notes"
+        "--list_decks", help="List decks name", action="store_true"
+    )
+    parser.add_argument(
+        "--f", "--file_name", help="The path to the file containing your notes"
     )
     parser.add_argument(
         "--find_note", help="Specify a textual clue to use to find a note"
@@ -50,7 +53,10 @@ def main() -> int:
     if args.create_deck:
         result = decks.create_deck(args.create_deck)
         logger.debug(result)
-
+    elif args.list_decks:
+        list_decks = decks.get_deck_names_and_ids()
+        if list_decks is not None:
+            logger.info(list(list_decks))
     elif args.find_note:
         card_ids = notes.get_cards_id_by_query(args.find_note)
         if card_ids is not None and len(card_ids) != 0:
