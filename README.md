@@ -41,14 +41,14 @@ Powershell:
 ```shell
 git clone https://github.com/moka-co/slopcards2anki.git
 cd slopcard2anki
-gemini mcp add slopcards2anki "python3 -m uv run --project $PWD python -m mcp_server.mcp_server"       
+gemini mcp add slopcards2anki "python3" "-m" "uv" "run" "--project" "$PWD" "python3" "-m" "mcp_server.mcp_server"       
 ```
 
 Linux:
 ```bash
 git clone https://github.com/moka-co/slopcards2anki.git
 cd slopcard2anki
-gemini mcp add slopcards2anki "python -m uv run --project $PWD python -m mcp_server.mcp_server"  
+gemini mcp add slopcards2anki "python" "-m" "uv" "run" "--project" "$PWD" "python" "-m" "mcp_server.mcp_server"  
 ```
 
 
