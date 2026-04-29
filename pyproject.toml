@@ -22,3 +22,22 @@ quote-style = "double"
 [tool.mypy]
 mypy_path = "." 
 ignore_missing_imports = true
+
+[tool.bandit]
+exclude_dirs = ["uv.lock", "__pycache__", ".gemini", "venv", ".venv"]
+
+[tool.interrogate]
+ignore-init-method = true
+ignore-init-module = false
+ignore-magic = false
+ignore-semiprivate = false
+ignore-private = false
+ignore-property-decorators = false
+ignore-module = false
+ignore-nested-functions = false
+ignore-nested-classes = true
+ignore-setters = false
+fail-under = 70  # Minimum % of docstring coverage allowed
+exclude = ["*.log", ".venv", "venv", "__init__", "__init__.py"]
+ignore-regex = ["^get$", "^set$"]
+color = true
