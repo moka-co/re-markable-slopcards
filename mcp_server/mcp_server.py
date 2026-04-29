@@ -10,7 +10,6 @@ mcp = FastMCP("slopcards2anki")
 
 # Configure logging to not interfere with stdio transport
 logging.basicConfig(
-    stream=sys.stderr,
     level=logging.DEBUG,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     filename="./mcp_debug.log",
