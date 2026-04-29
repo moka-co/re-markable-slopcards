@@ -30,7 +30,7 @@ To ensure high-quality cards, follow these rules when generating content:
    - Card A: Name/Concept -> Formula
    - Card B: Formula -> Concept/Variable definitions.
 - **Contextual Wikilinks**: If a markdown file contains [[wikilinks]], generate at least one question that references the linked concept (reading the linked file if available)
-- **Output:** Write the flashcards into a temporary .csv file.
+- **Output:** Write the flashcards into a temporary .csv file under `.tmp/` directory e.g. `./tmp/tmp_flashcards.csv`.
 
 ## Data Sanization
 To ensure the CLI parses the data correctly, you **must**:
