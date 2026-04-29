@@ -22,7 +22,7 @@ jobs:
         run: ruff check .
 
       - name: Run Ruff (Formatting)
-        run: ruff format --check .
+        run: ruff format --fix --check .
 
       - name: Run Mypy (Type Checking)
         run: mypy .
