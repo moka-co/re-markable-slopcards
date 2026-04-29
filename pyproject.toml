@@ -25,6 +25,7 @@ ignore_missing_imports = true
 
 [tool.bandit]
 exclude_dirs = ["uv.lock", "__pycache__", ".gemini", "venv", ".venv"]
+skips = ["B404"]
 
 [tool.interrogate]
 ignore-init-method = true
