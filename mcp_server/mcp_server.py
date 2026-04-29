@@ -6,7 +6,9 @@ import logging
 
 
 # Initialize FastMCP server
-mcp = FastMCP("slopcards2anki", instructions=Path("./mcp_server/INSTRUCTIONS.MD").read_text())
+mcp = FastMCP(
+    "slopcards2anki", instructions=Path("./mcp_server/INSTRUCTIONS.MD").read_text()
+)
 
 # Configure logging to not interfere with stdio transport
 logging.basicConfig(
